@@ -13,6 +13,7 @@ q  = [45;
       45;
       45];
   
+angle = 0;
 dq = 1;
 while 1
     base = [-dx, -dy, 0;
@@ -43,7 +44,7 @@ while 1
     xlim([-5, 5])
     ylim([-5, 5])
     zlim([0, 3])
-    %view()
+    view(angle, 30)
     drawnow
     hold off
     
@@ -51,5 +52,5 @@ while 1
         dq = dq * -1;
     end
     q = q + dq;
-    q
+    angle = angle + 0.1;
 end
