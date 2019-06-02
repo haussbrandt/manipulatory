@@ -3,17 +3,27 @@ clc, clear
 % długości ramion
 l = [1.2;1];
 
-% punkty w układzie kartezjańskim (1 punkt = 1 kolumna)
-P = [-1, -0.5, 0;
-     1,   0.5, 1];
 
-% prędkości liniowe w poszczególnych punktach (1 punkt = 1 kolumna)
-V = [0, 1, 0;
-    -1, 0, 1];
+% punkty w układzie kartezjańskim (1 punkt = 1 wiersz)
+
+P = [-1, 1;
+    -0.5, 0.5;
+    0, 1;
+    0.5, 0.5;
+    1, 1];
+P = P';
+
+% prędkości liniowe w poszczególnych punktach (1 punkt = 1 wiersz)
+V = [0, -1;
+     1, 0;
+     0, 1;
+     0, -1;
+     0, 1];
+V = V';
 
 % czas, w którym końcówka manipulatora znajduje się w poszczególnych
 % punktach
-tt = [0, 5, 10];
+tt = [0, 2, 4, 6, 8];
 
 Q = [];
 
@@ -42,7 +52,7 @@ for i = 1:length(P)
 beta(i) = atan2(V(1, i), V(2, i));
 end
 
-timestep = 0.1;
+timestep = 0.05;
 current = 1;
 for t = 0:timestep:tt(end)
     if (t > tt(current+1))
